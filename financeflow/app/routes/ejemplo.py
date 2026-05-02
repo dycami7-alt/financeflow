@@ -1,0 +1,1 @@
+# Ejemplo de endpoint (vacío)
