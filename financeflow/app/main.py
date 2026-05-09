@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import crear_tablas
-from app.routes import chat, perfil, conceptos, juego, racha, goals, challenges, streak
+from app.routes import chat, perfil, conceptos, juego, racha, goals, challenges, streak, auth
 import jwt
 from app.config import SECRET_KEY, ALGORITHM
 
@@ -115,5 +115,6 @@ app.include_router(racha, prefix="/api/rachas", tags=["Rachas"])
 app.include_router(streak, prefix="/api/streaks", tags=["Streaks"])
 app.include_router(goals, prefix="/api/goals", tags=["Goals"])
 app.include_router(challenges, prefix="/api/challenges", tags=["Challenges"])
+app.include_router(auth, prefix="/api/auth", tags=["Auth"])
 
 # Para ejecutar: uvicorn app.main:app --reload

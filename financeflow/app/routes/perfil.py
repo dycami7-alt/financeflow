@@ -1,6 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from typing import List, Dict, Any
-from app.services.perfil_service import calculate_profile, save_profile, get_user_profile
+from app.services.perfil_service import (
+    calculate_profile,
+    save_profile,
+    get_user_profile,
+    get_financial_scenarios,
+    evaluate_financial_decisions,
+)
 
 router = APIRouter()
 
@@ -40,3 +46,20 @@ async def submit_quiz_answers(data: Dict[str, Any]):
         "profile_id": profile_id,
         "profile": profile_data
     }
+
+
+@router.get("/scenarios")
+async def list_financial_scenarios():
+    """Devuelve escenarios financieros y opciones para calificar decisiones."""
+    return {"scenarios": get_financial_scenarios()}
+
+
+@router.post("/decisions")
+async def evaluate_decisions(data: Dict[str, Any]):
+    """Recibe decisiones del usuario, califica cada una y calcula el score final."""
+    decisions = data.get("decisions")
+    if not isinstance(decisions, list) or not decisions:
+        raise HTTPException(status_code=400, detail="decisions es requerido y debe ser una lista")
+
+    result = evaluate_financial_decisions(decisions)
+    return result

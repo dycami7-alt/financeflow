@@ -29,7 +29,7 @@ def crear_tablas():
             email TEXT NOT NULL UNIQUE,
             password_hash TEXT NOT NULL,
             created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            profile_id INTEGER NOT NULL
+            profile_id INTEGER NOT NULL DEFAULT 0
         )
         """
     )
@@ -127,6 +127,21 @@ def crear_tablas():
             best_streak INTEGER NOT NULL DEFAULT 0,
             last_activity_date TEXT,
             created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+        """
+    )
+
+    # Tabla para sesiones de juego completadas
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS game_sessions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            game_type TEXT NOT NULL DEFAULT 'financial',
+            score INTEGER NOT NULL,
+            decisions TEXT NOT NULL,
+            completed_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id)
         )
         """

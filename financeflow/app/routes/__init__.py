@@ -7,3 +7,4 @@ from .racha import router as racha
 from .goals import router as goals
 from .challenges import router as challenges
 from .streak import router as streak
+from .auth import router as auth
