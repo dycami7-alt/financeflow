@@ -187,7 +187,7 @@ export default function MiniFinanceGame({ onStreakUpdate }: { onStreakUpdate?: (
     const percentage = (gameState.score / GAME_SCENARIOS.length) * 100
 
     return (
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto float-up">
         <div className="bg-gradient-to-br from-purple-500/20 to-cyan-500/20 border border-purple-500/50 rounded-xl p-8 text-center space-y-6">
           <h2 className="text-3xl font-bold">{"¡Juego Terminado!"}</h2>
           <div className="space-y-2">
@@ -225,8 +225,8 @@ export default function MiniFinanceGame({ onStreakUpdate }: { onStreakUpdate?: (
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="mb-8">
+    <div className="max-w-2xl mx-auto float-up">
+      <div className="mb-8 animate-pulse">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm font-medium">
             Pregunta {gameState.currentScenario + 1} de {GAME_SCENARIOS.length}

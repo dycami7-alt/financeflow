@@ -144,15 +144,15 @@ export default function ChallengesDashboard({ profile }: ChallengesDashboardProp
   const totalXP = challenges.reduce((sum, c) => sum + (c.completed ? c.xp : 0), 0)
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
-      <div className="text-center space-y-2">
+    <div className="w-full max-w-4xl mx-auto space-y-6 float-up">
+      <div className="text-center space-y-2 float-up">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
           Tus Retos Personalizados
         </h2>
         <p className="text-muted-foreground">Completa desafíos tipo Duolingo y aprende ganando XP</p>
       </div>
 
-      <div className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 rounded-xl p-6 flex justify-between items-center">
+      <div className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 rounded-xl p-6 flex justify-between items-center animate-pulse">
         <div>
           <p className="text-sm text-muted-foreground">Total XP Acumulado</p>
           <p className="text-3xl font-bold text-cyan-400">{totalXP} XP</p>
@@ -169,7 +169,7 @@ export default function ChallengesDashboard({ profile }: ChallengesDashboardProp
         {challenges.map((challenge) => (
           <div
             key={challenge.id}
-            className={`p-4 rounded-xl border transition-all cursor-pointer ${
+            className={`p-4 rounded-xl border transition-all cursor-pointer float-up ${
               challenge.completed
                 ? "bg-green-900/20 border-green-500/50"
                 : "bg-slate-800/50 border-slate-700/50 hover:border-purple-500/50"
@@ -205,7 +205,7 @@ export default function ChallengesDashboard({ profile }: ChallengesDashboardProp
       </div>
 
       {selectedChallenge && (
-        <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-purple-500/30 rounded-xl p-6 space-y-4">
+        <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-purple-500/30 rounded-xl p-6 space-y-4 float-up">
           <div>
             <h3 className="text-2xl font-bold text-white mb-2">{selectedChallenge.title}</h3>
             <p className="text-muted-foreground">{selectedChallenge.description}</p>
